@@ -1,0 +1,9 @@
+{
+  "name": "workout-app",
+  "version": "1.0.0",
+  "description": "An app to create and track workouts and progress made in the gym",
+  "main": "index.js",
+  "repository": "https://github.com/ncastle/workout-app.git",
+  "author": "Nickolas Castle",
+  "license": "GNU GPL v3.0"
+}
