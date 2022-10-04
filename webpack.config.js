@@ -1,6 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
+  // Adding Server
+  devServer: {
+    port: 3000,
+  },
+  entry: {
+    index: './src/index.js',
+  },
   mode: 'development',
   module: {
     rules: [
@@ -16,18 +24,20 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
     ],
   },
-  // Adding Server
-  devServer: {
-    port: 8001,
-  },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Workout App',
       template: './public/index.html',
     }),
   ],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
 };
