@@ -4,8 +4,10 @@ const path = require('path');
 module.exports = {
   // Adding Server
   devServer: {
+    static: './dist',
     port: 3000,
   },
+  devtool: 'eval',
   entry: {
     index: './src/index.js',
   },
