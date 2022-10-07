@@ -3,3 +3,64 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-color: rgb(211, 222, 255);
+}
+
+button {
+  height: 1.5rem;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 1px 6px;
+  /* color: greenyellow; */
+}
+
+button#submit {
+  margin-bottom: 1rem;
+}
+
+/* class for a 0.25rem border radius */
+.br-025 {
+  border-radius: 0.25rem;
+}
+
+#app {
+  padding: 2rem;
+  width: 100%;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  border: initial;
+  padding: 1px 6px;
+}
+
+li {
+  background-color: lightgrey;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+/* li:last-child {
+  margin-left: auto;
+} */
