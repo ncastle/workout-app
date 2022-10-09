@@ -3,10 +3,18 @@ import React, { useState } from 'react';
 const App = () => {
   const [items, setItems] = useState([]);
   const [exercise, setExercise] = useState('');
+  const [isEditing, setIsEditing] = useState('');
+  const [editValue, setEditValue] = useState('');
+  const [editIndex, setEditIndex] = useState('');
 
   const handleChange = (evt) => {
-    const { value } = evt.target;
-    setExercise(value);
+    const { name, value } = evt.target;
+    if (name === 'exercise') {
+      setExercise(value);
+    }
+    if (name === 'editValue') {
+      setEditValue(value);
+    }
   };
 
   const handleSubmit = () => {
@@ -18,13 +26,28 @@ const App = () => {
   };
 
   const handleDelete = (i) => {
-    console.log('im deleting index ', i);
     const itemsCopy = [...items];
     itemsCopy.splice(i, 1);
     setItems(itemsCopy);
   };
 
-  console.log(exercise);
+  const startEdit = (item, index) => {
+    setIsEditing(true);
+    setEditIndex(index);
+    setEditValue(item);
+  };
+
+  const confirmEdit = (i) => {
+    const itemsCopy = [...items];
+    itemsCopy[i] = editValue;
+    setItems(itemsCopy);
+    setIsEditing(false);
+    setEditValue('');
+  };
+
+  const isEditIndex = (i) => {
+    return editIndex === i;
+  };
 
   return (
     <>
@@ -51,7 +74,26 @@ const App = () => {
         <ul>
           {items.map((item, i) => (
             <li className='item br-025' key={i}>
-              {item}
+              {isEditing && isEditIndex(i) ? (
+                <input
+                  className='br-025'
+                  name='editValue'
+                  value={editValue}
+                  onChange={handleChange}
+                />
+              ) : (
+                <div>{item}</div>
+              )}
+
+              {isEditing && isEditIndex(i) ? (
+                <button className='br-025' onClick={() => confirmEdit(i)}>
+                  confirm
+                </button>
+              ) : (
+                <button className='br-025' onClick={() => startEdit(item, i)}>
+                  edit
+                </button>
+              )}
               <button className='br-025' onClick={() => handleDelete(i)}>
                 delete
               </button>
